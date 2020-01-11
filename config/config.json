@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "oquizz",
+    "password": "oquizz",
+    "database": "oquizz",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "oquizz",
+    "password": "oquizz",
+    "database": "oquizz",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "oquizz",
+    "password": "oquizz",
+    "database": "oquizz",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  }
+}

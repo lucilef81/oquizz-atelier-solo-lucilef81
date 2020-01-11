@@ -14,15 +14,15 @@ class Answer extends sequelize.Model {
         this.description = value;
     };
 
-    getQuestionId(){
-        return this.question_id;
+    getQuestionsId(){
+        return this.questions_id;
     };
 
-    setQuestionId(value){
+    setQuestionsId(value){
         if(!Number.isInteger(value)){
-            throw Error('Answer.question_id must be an integer');
+            throw Error('Answer.questions_id must be an integer');
         }
-        this.question_id = value;
+        this.questions_id = value;
     };
 
     getStatus() {

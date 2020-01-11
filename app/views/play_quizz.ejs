@@ -1,0 +1,62 @@
+<%- include('partials/header') %>
+
+<div>
+  <h2>
+    <%= quizz.getTitle() %>
+    <span><%= quizz.questions.length %> questions</span>
+  </h2>
+</div>
+
+<div>
+  <% for (let tag of quizz.tags){ %>
+  <span class="tag tag--<%= tag.getName().toLowerCase() %>"
+    ><%= tag.getName() %></span
+  >
+  <% } %>
+</div>
+
+<div>
+  <h4>
+    <%= quizz.getDescription() %>
+  </h4>
+</div>
+
+<div>
+  <p>by <%= quizz.getAuthor() %></p>
+</div>
+
+<div class="row">
+  
+  <% for(let question of quizz.questions) { %>
+    <form method="POST">
+       
+
+    <div class="col question">
+      <input type="hidden" name="question-id" value="<%= question.id %>">
+      <span class="level level--<%= question.levels.getName().toLowerCase() %>"
+        ><%= question.levels.getName() %></span
+      >
+      <div class="question__question">
+        <%= question.getQuestion() %>
+      </div>
+      <div>
+        <ul>
+          <% for(let index in question.answers){ %>
+        
+
+          <li>
+            <input name="question-<%= question.id %>-answer" value="<%= question.answers[index].id %>" type="radio">
+            <%= parseInt(index) + 1 %>. <%=
+            question.answers[index].getDescription() %>
+          </li>
+          <% } %>
+        </ul>
+      </div>
+    </div>
+    
+  <% } %>
+  </form>
+
+</div>
+
+<%- include('partials/footer') %>

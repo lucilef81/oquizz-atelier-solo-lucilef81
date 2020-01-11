@@ -82,5 +82,5 @@ Tag.findByPk(1, {
     for(let quizz of tag.quizzes){
         message += `${quizz.title}, écrit par ${quizz.author.getFullName()}\n`;
     }
-    console.log(message);
+    // console.log(message);
 });
