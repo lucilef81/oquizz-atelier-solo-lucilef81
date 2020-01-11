@@ -19,6 +19,10 @@ router.get('/', mainController.homePage);
 
 // Page affichant un quizz
 router.get('/quizz/:id', quizzController.quizzPage);
+// Page gérant la soumission du formulaire
+router.post('/quizz/:id', quizzController.checkAnswers);
+
+
 
 // Page listant les catégories
 router.get('/tags', tagController.tagListPage);

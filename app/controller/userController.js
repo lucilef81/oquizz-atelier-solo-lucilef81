@@ -105,34 +105,8 @@ const userController = {
 
     loginAction: async (request, response) => {
 
-        /*User.findOne({
-            where: {
-                email: request.body.email
-            }
-        }).then(user => {
-            if (!user) {
-                return response.render('login', { error: "Cet email n'existe pas" });
-            }
-
-            const passwordExpected = user.getPassword();
-            // afin de vérfier si le mot de passe est valide on utilise la méthode compare(Sync) du module bcrypt
-            const validPassword = bcrypt.compareSync(request.body.password, passwordExpected);
-
-            if (!validPassword) {
-                return response.render('login', { error: "Ce n'est pas le bon mot de passe" });
-            }
-
-            // On peut maintenant loguer l'utilisateur
-            // La session est stocké dans l'objet de requête
-            // Afin de pouvoir supprimer le password sur la même appel que ca création il faut y stocker les valeurs plutot que l'instance
-            request.session.user = user.dataValues;
-            // Par contre on veut pas stocker le mot de passe
-            delete request.session.user.password;
-            // Une fois l'utilisateur logué on peut le rediriger vers la page d'accueil
-            return response.redirect('/');
-        });*/
         try {
-            //pause 
+            
             const user = await User.findOne({
                 where: {
                     email: request.body.email

@@ -27,8 +27,8 @@
 
 <div class="row">
   
+  <form method="POST">
   <% for(let question of quizz.questions) { %>
-    <form method="POST">
        
 
     <div class="col question">
@@ -48,6 +48,7 @@
             <input name="question-<%= question.id %>-answer" value="<%= question.answers[index].id %>" type="radio">
             <%= parseInt(index) + 1 %>. <%=
             question.answers[index].getDescription() %>
+            <%= question.answers[index].id %>
           </li>
           <% } %>
         </ul>
@@ -55,6 +56,7 @@
     </div>
     
   <% } %>
+  <button type="submit" class="btn">Submit</button>
   </form>
 
 </div>
