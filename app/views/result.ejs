@@ -1,8 +1,53 @@
 <%- include('partials/header') %>
 
-<h2>Resultats</h2>
+<div>
+    <h2> <%= quizz.getTitle() %>
+        <span><%= quizz.questions.length %> questions</span>
+    </h2>
+</div>
 
-<h1>Score: <%= score %> / <%= questionsCount %></h1>
+<div>
+ <% for (let tag of quizz.tags){ %>
+    <span class="tag tag--<%= tag.getName().toLowerCase() %>"><%= tag.getName() %></span>
+ <% } %>
+</div>
 
+
+<div>
+    <h4> 
+        <%= quizz.getDescription() %>
+    </h4>
+</div>
+
+<div>
+    <p>by <%= quizz.getAuthor() %></p>
+</div>
+
+<div>
+  <p>Score: <%= score %>/<%= quizz.questions.length %></p>
+</div>
+
+<div class="row">
+
+    <% quizz.questions.map((question, qIndex) => { %> 
+
+      <div class="col question">
+          <span class="level level--<%= question.levels.getName().toLowerCase() %>"><%= question.levels.getName() %></span>
+          <div class="question__question">
+              <%= question.getQuestion() %>
+          </div>
+          <div>
+              <ul>
+              <% for(let index in question.answers){ %>
+                  <li class="<%= getCSSClass(userAnswers[qIndex], question.answers_id, question.answers[index].id) %>"><%= parseInt(index) + 1 %>. <%= question.answers[index].getDescription() %></li>
+                <% } %>
+              </ul> 
+          </div>
+      </div>
+
+    
+    <% }) %>
+  
+</div>
 
 <%- include('partials/footer') %>

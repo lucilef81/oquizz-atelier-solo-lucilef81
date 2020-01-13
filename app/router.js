@@ -20,7 +20,7 @@ router.get('/', mainController.homePage);
 // Page affichant un quizz
 router.get('/quizz/:id', quizzController.quizzPage);
 // Page gérant la soumission du formulaire
-router.post('/quizz/:id', quizzController.checkAnswers);
+router.post('/quizz/:id', quizzController.resultPage);
 
 
 
@@ -54,5 +54,9 @@ router.get('/profile', userController.profilePage)
 // Désormais la route /admin utilise 2 middleware, il va les exécuter dans l'ordre, le premier est chargé de vérifier sur l'utilisateur est bien un admin, si c'est le cas grâce a next() le middleware suivant sera exécuté
 router.get('/admin', adminMiddleware, adminController.adminPage);
 // L'intéret de créer un middleware indépendant pour gérer l'accès admin, c'est qu'on pourrais l'utiliser facilement sur une autre route
+
+//Route pour ajouter un nouveau tag accessible uniquement aux admins
+router.get('/newtag', adminMiddleware, tagController.newTag);
+router.post('/newtag', adminMiddleware, tagController.newTag);
 
 module.exports = router;

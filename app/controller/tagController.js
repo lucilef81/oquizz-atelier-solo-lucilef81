@@ -18,13 +18,7 @@ const tagController = {
         // cas de récuperation par name
         //const tagName = request.params.id;
         const tagId = parseInt(request.params.id);
-        // cas de récuperation par name
-        //Tag.findOne({name: tagName}).then(...);
-        /*Tag.findByPk(tagId, {
-            include: ["quizzes"]
-        }).then(tag => {
-            response.render('tag', { tag: tag });
-        })*/
+        
         try {
             const tag = await Tag.findByPk(tagId, { 
                 include: [
@@ -37,6 +31,24 @@ const tagController = {
             response.render('tag', { tag: tag });
         } catch (error) {
             response.status(500).send(error);
+        }
+    },
+
+    newTag:  async (req, res) => {
+        const tagId = parseInt(req.params.id);
+
+        try {
+            const tag = await Tag.findByPk(tagId, {
+                include: [
+                    {
+                        association : "quizzes",
+                        include: "author"
+                    }
+                ]
+            });
+            res.render('new_tag', {tag: tag});
+        } catch (err) {
+            res.status(500).send(err);
         }
     }
 
