@@ -1,0 +1,13 @@
+<%- include('partials/header') %>
+
+<div class="row">
+
+  <form action="/newtag" method="POST">
+  
+  <div class="form-group">
+    <label for="newtag">New Tag</label>
+    <input type="text" class="form-control" id="newtag" name="newtag" placeholder="Enter new tag" value="<%=formData.newtag%>">
+  </div>
+
+
+<%- include('partials/footer') %>
